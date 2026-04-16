@@ -28,75 +28,78 @@ export default function MenuPage() {
 
   return (
     <div>
-      <section className="py-16 border-b border-brand-border">
+      {/* Hero */}
+      <section className="pt-32 pb-16">
         <div className="container">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-brand-heading mb-3">This Week&apos;s Menu</h1>
-          <p className="text-lg text-brand-text/70">{currentWeek.weekStart} &ndash; {currentWeek.weekEnd}</p>
-          <p className="text-sm text-brand-accent mt-2">Order cutoff: {currentWeek.cutoffDate}</p>
+          <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 font-medium">Weekly Selection</p>
+          <h1 className="font-serif text-5xl md:text-6xl text-brand-heading mb-4 font-normal">This Week&apos;s Menu</h1>
+          <p className="text-white/40 font-light">{currentWeek.weekStart} &ndash; {currentWeek.weekEnd}</p>
+          <p className="text-[11px] uppercase tracking-[0.2em] text-brand-accent/50 mt-3 font-medium">Order by {currentWeek.cutoffDate}</p>
         </div>
       </section>
 
-      <section className="py-20">
+      {/* Main Dishes */}
+      <section className="py-16 border-t border-white/[0.04]">
         <div className="container">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-2xl font-extrabold text-brand-heading">Main Dishes</h2>
-            <div className="flex-1 h-px bg-brand-accent/30" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="font-serif text-3xl text-brand-heading mb-12 font-normal">Main Dishes</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {menuItems.map((item) => (<MenuItemCard key={item.id} {...item} />))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-brand-surface">
+      {/* Add-Ons */}
+      <section className="py-16 border-t border-white/[0.04]">
         <div className="container">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-2xl font-extrabold text-brand-heading">Add-Ons</h2>
-            <div className="flex-1 h-px bg-brand-accent/30" />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <h2 className="font-serif text-3xl text-brand-heading mb-12 font-normal">Add-Ons</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {addOns.map((addon) => (
-              <div key={addon.id} className="bg-brand-base rounded-lg p-5 border border-brand-border hover:border-brand-accent/40 transition-colors">
-                <p className="font-semibold text-brand-heading text-sm mb-2">{addon.name}</p>
-                <p className="text-brand-accent font-bold mb-4">${(addon.price / 100).toFixed(2)}</p>
-                <button className="w-full px-3 py-2 border border-brand-accent text-brand-accent rounded-lg hover:bg-brand-accent hover:text-brand-base transition-all text-sm font-semibold cursor-pointer">Add</button>
+              <div key={addon.id} className="py-6 px-5 rounded-sm bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
+                <p className="text-brand-heading text-sm mb-1 font-normal">{addon.name}</p>
+                <p className="text-brand-accent text-sm font-medium mb-5">${(addon.price / 100).toFixed(2)}</p>
+                <button className="w-full py-2 text-[11px] uppercase tracking-[0.15em] text-white/40 border border-white/[0.08] hover:text-white hover:border-white/20 rounded-sm transition-all duration-300 cursor-pointer font-medium">Add</button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20">
+      {/* Desserts */}
+      <section className="py-16 border-t border-white/[0.04]">
         <div className="container">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-2xl font-extrabold text-brand-heading">Desserts</h2>
-            <div className="flex-1 h-px bg-brand-accent/30" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h2 className="font-serif text-3xl text-brand-heading mb-12 font-normal">Desserts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {desserts.map((dessert) => (
-              <div key={dessert.id} className="bg-brand-surface rounded-lg p-6 border border-brand-border hover:border-brand-accent/40 transition-colors">
-                <p className="font-semibold text-brand-heading mb-2">{dessert.name}</p>
-                <p className="text-brand-accent font-bold mb-4">${(dessert.price / 100).toFixed(2)}</p>
-                <button className="w-full px-4 py-2.5 border border-brand-accent text-brand-accent rounded-lg hover:bg-brand-accent hover:text-brand-base transition-all font-semibold cursor-pointer">Add</button>
+              <div key={dessert.id} className="py-6 px-5 rounded-sm bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
+                <p className="text-brand-heading mb-1 font-normal">{dessert.name}</p>
+                <p className="text-brand-accent text-sm font-medium mb-5">${(dessert.price / 100).toFixed(2)}</p>
+                <button className="w-full py-2.5 text-[11px] uppercase tracking-[0.15em] text-white/40 border border-white/[0.08] hover:text-white hover:border-white/20 rounded-sm transition-all duration-300 cursor-pointer font-medium">Add</button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-brand-surface border-t border-brand-border">
+      {/* Cart Summary */}
+      <section className="py-20 border-t border-white/[0.04]">
         <div className="container">
-          <div className="max-w-md mx-auto bg-brand-base p-8 rounded-lg border border-brand-border">
-            <h3 className="text-2xl font-extrabold mb-6 text-brand-heading">Cart Summary</h3>
-            <div className="mb-6 pb-6 border-b border-brand-border">
-              <p className="text-brand-text/60 mb-2">Items in cart: <span className="font-semibold text-brand-heading">0</span></p>
-              <p className="text-brand-text/60 mb-2">Subtotal: <span className="font-semibold text-brand-heading">$0.00</span></p>
-              <p className="text-xs text-brand-text/40 mb-4">$40 minimum order</p>
-              <div className="w-full bg-brand-border rounded-full h-1.5">
-                <div className="bg-brand-accent h-1.5 rounded-full" style={{ width: '0%' }} />
+          <div className="max-w-sm mx-auto">
+            <h3 className="font-serif text-2xl text-brand-heading mb-8 font-normal">Cart Summary</h3>
+            <div className="mb-8 pb-8 border-b border-white/[0.06]">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-white/35 font-light">Items in cart</span>
+                <span className="text-brand-heading">0</span>
+              </div>
+              <div className="flex justify-between text-sm mb-4">
+                <span className="text-white/35 font-light">Subtotal</span>
+                <span className="text-brand-heading">$0.00</span>
+              </div>
+              <p className="text-[11px] text-white/20 tracking-wider mb-5 uppercase">$40 minimum order</p>
+              <div className="w-full bg-white/[0.04] rounded-full h-1">
+                <div className="bg-brand-accent/60 h-1 rounded-full" style={{ width: '0%' }} />
               </div>
             </div>
-            <button className="w-full px-4 py-3 bg-brand-accent text-brand-base rounded-lg font-semibold hover:bg-brand-accent-hover transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer" disabled>Proceed to Checkout</button>
+            <button className="w-full py-3.5 bg-brand-accent text-brand-base text-[11px] uppercase tracking-[0.15em] font-medium hover:bg-brand-accent-hover hover:shadow-[0_0_30px_rgba(74,222,64,0.15)] transition-all duration-300 disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer" disabled>Proceed to Checkout</button>
           </div>
         </div>
       </section>
