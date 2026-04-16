@@ -1,6 +1,14 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
+// Lazy-load Stripe to avoid initialization errors during build
+let stripe: Stripe | null = null;
+
+function getStripeInstance() {
+  if (!stripe && process.env.STRIPE_SECRET_KEY) {
+    stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  }
+  return stripe;
+}
 
 export async function verifyStripeWebhookSignature(
   body: string,
@@ -11,8 +19,14 @@ export async function verifyStripeWebhookSignature(
     return null;
   }
 
+  const stripeInstance = getStripeInstance();
+  if (!stripeInstance) {
+    console.error('Stripe not configured');
+    return null;
+  }
+
   try {
-    const event = stripe.webhooks.constructEvent(
+    const event = stripeInstance.webhooks.constructEvent(
       body,
       signature,
       process.env.STRIPE_WEBHOOK_SECRET
