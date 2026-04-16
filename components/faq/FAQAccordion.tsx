@@ -25,18 +25,18 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
       {items.map((item) => (
         <div
           key={item.id}
-          className="border-2 border-brand-dark/20 rounded-lg overflow-hidden"
+          className="border-2 border-brand-border rounded-lg overflow-hidden"
         >
           <button
             onClick={() => toggleItem(item.id)}
-            className="w-full px-6 py-4 flex items-center justify-between hover:bg-brand-cream/50 transition-colors"
+            className="w-full px-6 py-4 flex items-center justify-between hover:bg-brand-surface transition-colors"
           >
-            <h3 className="text-left text-lg font-semibold text-brand-dark">
+            <h3 className="text-left text-lg font-semibold text-brand-heading">
               {item.question}
             </h3>
             <svg
               className={cn(
-                'w-6 h-6 text-brand-gold flex-shrink-0 ml-4 transition-transform duration-300',
+                'w-6 h-6 text-brand-accent flex-shrink-0 ml-4 transition-transform duration-300',
                 openId === item.id ? 'rotate-180' : ''
               )}
               fill="none"
@@ -52,8 +52,8 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
             </svg>
           </button>
           {openId === item.id && (
-            <div className="px-6 py-4 bg-brand-cream/30 border-t-2 border-brand-dark/20">
-              <p className="text-brand-dark/80 leading-relaxed">{item.answer}</p>
+            <div className="px-6 py-4 bg-brand-base/50 border-t border-brand-border">
+              <p className="text-brand-text/80 leading-relaxed">{item.answer}</p>
             </div>
           )}
         </div>

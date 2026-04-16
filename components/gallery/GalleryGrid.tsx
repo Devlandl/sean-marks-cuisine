@@ -129,8 +129,8 @@ export default function GalleryGrid() {
             className={cn(
               'px-6 py-2 rounded-full text-sm font-medium transition-all',
               activeCategory === category
-                ? 'bg-brand-dark text-brand-cream'
-                : 'border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-brand-cream'
+                ? 'bg-brand-accent text-brand-base'
+                : 'border border-brand-border text-brand-text hover:bg-brand-accent hover:text-brand-base hover:border-brand-accent'
             )}
           >
             {category}
@@ -152,12 +152,12 @@ export default function GalleryGrid() {
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-base/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
               <div>
-                <p className="text-brand-cream font-medium text-sm">
+                <p className="text-brand-heading font-medium text-sm">
                   {item.alt}
                 </p>
-                <p className="text-brand-gold text-xs">{item.category}</p>
+                <p className="text-brand-accent text-xs">{item.category}</p>
               </div>
             </div>
           </button>

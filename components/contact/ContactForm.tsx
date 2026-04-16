@@ -59,7 +59,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Name Field */}
       <div>
-        <label htmlFor="name" className="block text-sm font-semibold text-brand-dark mb-2">
+        <label htmlFor="name" className="block text-sm font-semibold text-brand-text/70 mb-2">
           Full Name *
         </label>
         <input
@@ -70,13 +70,13 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           placeholder="John Smith"
-          className="w-full px-4 py-3 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/20 transition-colors"
+          className="dark-input"
         />
       </div>
 
       {/* Email Field */}
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-brand-dark mb-2">
+        <label htmlFor="email" className="block text-sm font-semibold text-brand-text/70 mb-2">
           Email Address *
         </label>
         <input
@@ -87,13 +87,13 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           placeholder="john@example.com"
-          className="w-full px-4 py-3 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/20 transition-colors"
+          className="dark-input"
         />
       </div>
 
       {/* Phone Field */}
       <div>
-        <label htmlFor="phone" className="block text-sm font-semibold text-brand-dark mb-2">
+        <label htmlFor="phone" className="block text-sm font-semibold text-brand-text/70 mb-2">
           Phone Number *
         </label>
         <input
@@ -104,13 +104,13 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           placeholder="(555) 123-4567"
-          className="w-full px-4 py-3 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/20 transition-colors"
+          className="dark-input"
         />
       </div>
 
       {/* Subject Field */}
       <div>
-        <label htmlFor="subject" className="block text-sm font-semibold text-brand-dark mb-2">
+        <label htmlFor="subject" className="block text-sm font-semibold text-brand-text/70 mb-2">
           Subject *
         </label>
         <select
@@ -119,7 +119,7 @@ export default function ContactForm() {
           value={formData.subject}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/20 transition-colors appearance-none bg-white"
+          className="dark-select"
         >
           <option value="">Select a subject</option>
           <option value="general">General Inquiry</option>
@@ -132,7 +132,7 @@ export default function ContactForm() {
 
       {/* Message Field */}
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-brand-dark mb-2">
+        <label htmlFor="message" className="block text-sm font-semibold text-brand-text/70 mb-2">
           Message *
         </label>
         <textarea
@@ -143,21 +143,21 @@ export default function ContactForm() {
           required
           placeholder="Tell us more about your inquiry&hellip;"
           rows={6}
-          className="w-full px-4 py-3 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold/20 transition-colors resize-none"
+          className="dark-input resize-none"
         />
       </div>
 
       {/* Status Messages */}
       {submitStatus === 'success' && (
-        <div className="p-4 bg-green-50 border-2 border-green-200 rounded-lg">
-          <p className="text-green-800 font-medium">
+        <div className="p-4 bg-brand-accent/10 border-2 border-brand-accent/30 rounded-lg">
+          <p className="text-brand-accent font-medium">
             Thank you! Your message has been sent. We&apos;ll get back to you soon.
           </p>
         </div>
       )}
       {submitStatus === 'error' && (
-        <div className="p-4 bg-red-50 border-2 border-red-200 rounded-lg">
-          <p className="text-red-800 font-medium">
+        <div className="p-4 bg-red-500/10 border-2 border-red-500/30 rounded-lg">
+          <p className="text-red-400 font-medium">
             There was an error sending your message. Please try again.
           </p>
         </div>
