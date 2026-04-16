@@ -28,78 +28,164 @@ export default function MenuPage() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="pt-32 pb-16">
+      {/* Hero - asymmetric layout */}
+      <section className="pt-40 pb-20">
         <div className="container">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 font-medium">Weekly Selection</p>
-          <h1 className="font-serif text-5xl md:text-6xl text-brand-heading mb-4 font-normal">This Week&apos;s Menu</h1>
-          <p className="text-white/40 font-light">{currentWeek.weekStart} &ndash; {currentWeek.weekEnd}</p>
-          <p className="text-[11px] uppercase tracking-[0.2em] text-brand-accent/50 mt-3 font-medium">Order by {currentWeek.cutoffDate}</p>
-        </div>
-      </section>
-
-      {/* Main Dishes */}
-      <section className="py-16 border-t border-white/[0.04]">
-        <div className="container">
-          <h2 className="font-serif text-3xl text-brand-heading mb-12 font-normal">Main Dishes</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {menuItems.map((item) => (<MenuItemCard key={item.id} {...item} />))}
+          <div className="max-w-2xl">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-5 font-medium">Weekly Selection</p>
+            <h1 className="font-serif text-5xl md:text-7xl text-brand-heading mb-6 font-normal leading-[1.05]">
+              This Week&apos;s<br />Menu
+            </h1>
+            <div className="flex items-center gap-6 text-sm">
+              <p className="text-white/40 font-light">{currentWeek.weekStart} &ndash; {currentWeek.weekEnd}</p>
+              <span className="w-8 h-px bg-white/10" />
+              <p className="text-[11px] uppercase tracking-[0.2em] text-brand-accent/50 font-medium">Order by {currentWeek.cutoffDate}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Add-Ons */}
-      <section className="py-16 border-t border-white/[0.04]">
+      {/* Main Content: Menu + Sticky Cart Sidebar */}
+      <section className="border-t border-white/[0.04]">
         <div className="container">
-          <h2 className="font-serif text-3xl text-brand-heading mb-12 font-normal">Add-Ons</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-            {addOns.map((addon) => (
-              <div key={addon.id} className="py-6 px-5 rounded-sm bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
-                <p className="text-brand-heading text-sm mb-1 font-normal">{addon.name}</p>
-                <p className="text-brand-accent text-sm font-medium mb-5">${(addon.price / 100).toFixed(2)}</p>
-                <button className="w-full py-2 text-[11px] uppercase tracking-[0.15em] text-white/40 border border-white/[0.08] hover:text-white hover:border-white/20 rounded-sm transition-all duration-300 cursor-pointer font-medium">Add</button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-16">
 
-      {/* Desserts */}
-      <section className="py-16 border-t border-white/[0.04]">
-        <div className="container">
-          <h2 className="font-serif text-3xl text-brand-heading mb-12 font-normal">Desserts</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {desserts.map((dessert) => (
-              <div key={dessert.id} className="py-6 px-5 rounded-sm bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
-                <p className="text-brand-heading mb-1 font-normal">{dessert.name}</p>
-                <p className="text-brand-accent text-sm font-medium mb-5">${(dessert.price / 100).toFixed(2)}</p>
-                <button className="w-full py-2.5 text-[11px] uppercase tracking-[0.15em] text-white/40 border border-white/[0.08] hover:text-white hover:border-white/20 rounded-sm transition-all duration-300 cursor-pointer font-medium">Add</button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            {/* Left: Menu Items */}
+            <div>
+              {/* Main Dishes - Editorial List */}
+              <div className="py-20">
+                <h2 className="font-serif text-3xl text-brand-heading mb-4 font-normal">Main Dishes</h2>
+                <p className="text-white/25 text-sm font-light mb-14">Half and full portions available</p>
 
-      {/* Cart Summary */}
-      <section className="py-20 border-t border-white/[0.04]">
-        <div className="container">
-          <div className="max-w-sm mx-auto">
-            <h3 className="font-serif text-2xl text-brand-heading mb-8 font-normal">Cart Summary</h3>
-            <div className="mb-8 pb-8 border-b border-white/[0.06]">
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-white/35 font-light">Items in cart</span>
-                <span className="text-brand-heading">0</span>
+                {/* Featured first two - larger */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                  {menuItems.slice(0, 2).map((item) => (
+                    <MenuItemCard key={item.id} {...item} featured />
+                  ))}
+                </div>
+
+                {/* Rest - compact list style */}
+                <div className="space-y-0">
+                  {menuItems.slice(2).map((item) => (
+                    <div key={item.id} className={`flex items-center justify-between py-6 border-b border-white/[0.04] group ${item.isSoldOut ? 'opacity-30' : ''}`}>
+                      <div className="flex-1 min-w-0 mr-8">
+                        <div className="flex items-baseline gap-3">
+                          <h3 className="font-serif text-lg text-brand-heading font-normal">{item.name}</h3>
+                          <span className="hidden md:block flex-1 border-b border-dotted border-white/[0.06]" />
+                          <span className="text-brand-accent text-sm font-medium whitespace-nowrap">
+                            ${(item.halfPortionPrice / 100).toFixed(2)} / ${(item.fullPortionPrice / 100).toFixed(2)}
+                          </span>
+                        </div>
+                        <p className="text-white/25 text-sm font-light mt-1">{item.description}</p>
+                      </div>
+                      <button
+                        className={`text-[10px] uppercase tracking-[0.15em] px-5 py-2 border rounded-sm transition-all duration-300 font-medium whitespace-nowrap ${
+                          item.isSoldOut
+                            ? 'text-white/15 border-white/[0.04] cursor-not-allowed'
+                            : 'text-white/40 border-white/[0.08] hover:text-brand-accent hover:border-brand-accent/30 cursor-pointer'
+                        }`}
+                        disabled={item.isSoldOut}
+                      >
+                        {item.isSoldOut ? 'Sold Out' : 'Add'}
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="flex justify-between text-sm mb-4">
-                <span className="text-white/35 font-light">Subtotal</span>
-                <span className="text-brand-heading">$0.00</span>
+
+              {/* Add-Ons - Compact horizontal strip */}
+              <div className="py-16 border-t border-white/[0.04]">
+                <div className="flex items-baseline justify-between mb-10">
+                  <h2 className="font-serif text-2xl text-brand-heading font-normal">Sides &amp; Add-Ons</h2>
+                  <span className="text-[11px] text-white/20 uppercase tracking-[0.2em]">{addOns.length} items</span>
+                </div>
+                <div className="space-y-0">
+                  {addOns.map((addon) => (
+                    <div key={addon.id} className="flex items-center justify-between py-4 border-b border-white/[0.04] group">
+                      <div className="flex items-baseline gap-3 flex-1">
+                        <span className="text-white/50 text-sm font-light">{addon.name}</span>
+                        <span className="hidden md:block flex-1 border-b border-dotted border-white/[0.04]" />
+                        <span className="text-brand-accent text-sm font-medium">${(addon.price / 100).toFixed(2)}</span>
+                      </div>
+                      <button className="ml-6 text-[10px] uppercase tracking-[0.15em] text-white/30 hover:text-brand-accent transition-colors duration-300 cursor-pointer font-medium">Add</button>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p className="text-[11px] text-white/20 tracking-wider mb-5 uppercase">$40 minimum order</p>
-              <div className="w-full bg-white/[0.04] rounded-full h-1">
-                <div className="bg-brand-accent/60 h-1 rounded-full" style={{ width: '0%' }} />
+
+              {/* Desserts - Visual break with different treatment */}
+              <div className="py-16 border-t border-white/[0.04]">
+                <div className="flex items-baseline justify-between mb-10">
+                  <h2 className="font-serif text-2xl text-brand-heading font-normal">Desserts</h2>
+                  <span className="text-[11px] text-white/20 uppercase tracking-[0.2em]">Sweet finishes</span>
+                </div>
+                <div className="grid grid-cols-3 gap-0 border border-white/[0.04]">
+                  {desserts.map((dessert, i) => (
+                    <div key={dessert.id} className={`p-6 text-center hover:bg-white/[0.02] transition-all duration-300 ${i < desserts.length - 1 ? 'border-r border-white/[0.04]' : ''}`}>
+                      <p className="font-serif text-brand-heading text-base mb-2 font-normal">{dessert.name}</p>
+                      <p className="text-brand-accent text-sm font-medium mb-5">${(dessert.price / 100).toFixed(2)}</p>
+                      <button className="text-[10px] uppercase tracking-[0.15em] text-white/30 hover:text-brand-accent transition-colors duration-300 cursor-pointer font-medium">Add</button>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-            <button className="w-full py-3.5 bg-brand-accent text-brand-base text-[11px] uppercase tracking-[0.15em] font-medium hover:bg-brand-accent-hover hover:shadow-[0_0_30px_rgba(74,222,64,0.15)] transition-all duration-300 disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer" disabled>Proceed to Checkout</button>
+
+            {/* Right: Sticky Cart Sidebar */}
+            <div className="hidden lg:block">
+              <div className="sticky top-28 py-20">
+                <div className="border-l border-white/[0.06] pl-10">
+                  <h3 className="text-[11px] uppercase tracking-[0.25em] text-white/30 mb-8 font-medium">Your Order</h3>
+
+                  <div className="mb-8 text-sm">
+                    <div className="flex justify-between mb-3">
+                      <span className="text-white/25 font-light">Items</span>
+                      <span className="text-white/60">0</span>
+                    </div>
+                    <div className="flex justify-between mb-6">
+                      <span className="text-white/25 font-light">Subtotal</span>
+                      <span className="text-white/60">$0.00</span>
+                    </div>
+
+                    <div className="w-full bg-white/[0.04] rounded-full h-0.5 mb-2">
+                      <div className="bg-brand-accent/50 h-0.5 rounded-full" style={{ width: '0%' }} />
+                    </div>
+                    <p className="text-[10px] text-white/15 tracking-wider uppercase">$40 minimum</p>
+                  </div>
+
+                  <button
+                    className="w-full py-3 bg-brand-accent text-brand-base text-[10px] uppercase tracking-[0.2em] font-medium hover:bg-brand-accent-hover hover:shadow-[0_0_30px_rgba(74,222,64,0.15)] transition-all duration-300 disabled:opacity-15 disabled:cursor-not-allowed cursor-pointer"
+                    disabled
+                  >
+                    Checkout
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile Cart - only visible on small screens */}
+      <section className="lg:hidden py-16 border-t border-white/[0.04]">
+        <div className="container">
+          <div className="max-w-sm mx-auto">
+            <h3 className="font-serif text-2xl text-brand-heading mb-8 font-normal">Your Order</h3>
+            <div className="mb-6 text-sm">
+              <div className="flex justify-between mb-2">
+                <span className="text-white/25 font-light">Items</span>
+                <span className="text-white/60">0</span>
+              </div>
+              <div className="flex justify-between mb-4">
+                <span className="text-white/25 font-light">Subtotal</span>
+                <span className="text-white/60">$0.00</span>
+              </div>
+              <p className="text-[10px] text-white/15 tracking-wider uppercase mb-6">$40 minimum order</p>
+            </div>
+            <button className="w-full py-3.5 bg-brand-accent text-brand-base text-[11px] uppercase tracking-[0.15em] font-medium disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer" disabled>
+              Proceed to Checkout
+            </button>
           </div>
         </div>
       </section>
