@@ -29,7 +29,7 @@ export default function MenuPage() {
   return (
     <div>
       {/* Hero - asymmetric layout */}
-      <section className="pt-40 pb-20">
+      <section className="pt-20 pb-24">
         <div className="container">
           <div className="max-w-2xl">
             <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-5 font-medium">Weekly Selection</p>

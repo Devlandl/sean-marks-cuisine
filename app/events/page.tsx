@@ -10,32 +10,32 @@ export default function EventsPage() {
 
   return (
     <div>
-      <section className="pt-32 pb-20 text-center">
-        <div className="container">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 font-medium">Upcoming</p>
-          <h1 className="font-serif text-5xl md:text-6xl text-brand-heading mb-6 font-normal">Special Events</h1>
-          <p className="text-lg text-white/35 max-w-xl mx-auto font-light">Exclusive dinners, cooking classes, and culinary experiences</p>
+      <section className="pt-20 pb-24 text-center">
+        <div className="container hero-animate">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-5 font-medium">Upcoming</p>
+          <h1 className="font-serif text-5xl md:text-7xl text-brand-heading mb-8 font-normal">Special Events</h1>
+          <p className="text-lg text-white/35 max-w-xl mx-auto font-light leading-relaxed">Exclusive dinners, cooking classes, and culinary experiences</p>
         </div>
       </section>
 
-      <section className="py-16 border-t border-white/[0.04]">
+      <section className="py-24 border-t border-white/[0.04]">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 stagger-children">
             {events.map((event) => {
               const spotsLeft = event.capacity - event.registered;
               const isSoldOut = spotsLeft <= 0;
               return (
-                <div key={event.id} className="py-8 px-7 rounded-sm bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
-                  <p className="text-[11px] uppercase tracking-[0.25em] text-brand-accent/50 mb-4 font-medium">{event.date}</p>
-                  <h3 className="font-serif text-xl text-brand-heading mb-3 font-normal">{event.title}</h3>
-                  <p className="text-white/30 text-sm mb-8 font-light">{event.description}</p>
-                  <div className="space-y-3 text-sm mb-8 pb-8 border-b border-white/[0.06]">
+                <div key={event.id} className="hover-lift py-10 px-8 rounded-sm bg-white/[0.02]">
+                  <p className="text-[11px] uppercase tracking-[0.25em] text-brand-accent/50 mb-5 font-medium">{event.date}</p>
+                  <h3 className="font-serif text-2xl text-brand-heading mb-4 font-normal">{event.title}</h3>
+                  <p className="text-white/30 text-sm mb-10 font-light leading-relaxed">{event.description}</p>
+                  <div className="space-y-3 text-sm mb-10 pb-10 border-b border-white/[0.06]">
                     <div className="flex justify-between"><span className="text-white/20 font-light">Time</span><span className="text-white/50">{event.time}</span></div>
                     <div className="flex justify-between"><span className="text-white/20 font-light">Price</span><span className="text-brand-accent font-medium">${(event.price / 100).toFixed(2)} / person</span></div>
                     <div className="flex justify-between"><span className="text-white/20 font-light">Availability</span><span className={isSoldOut ? 'text-red-400/70' : 'text-white/50'}>{isSoldOut ? 'Sold Out' : `${spotsLeft} spots left`}</span></div>
                   </div>
                   <Link href={`/events/${event.id}`}>
-                    <Button variant={isSoldOut ? 'secondary' : 'primary'} size="md" className="w-full" disabled={isSoldOut}>{isSoldOut ? 'Sold Out' : 'Learn More'}</Button>
+                    <Button variant={isSoldOut ? 'secondary' : 'outline'} size="md" className="w-full" disabled={isSoldOut}>{isSoldOut ? 'Sold Out' : 'Learn More'}</Button>
                   </Link>
                 </div>
               );
@@ -44,10 +44,10 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section className="py-24 border-t border-white/[0.04]">
-        <div className="container text-center">
-          <h2 className="font-serif text-3xl mb-5 text-brand-heading font-normal">Stay in the Loop</h2>
-          <p className="text-white/30 mb-8 font-light">Subscribe for event announcements</p>
+      <section className="py-32 border-t border-white/[0.04]">
+        <div className="container text-center hero-animate">
+          <h2 className="font-serif text-3xl md:text-4xl mb-6 text-brand-heading font-normal">Stay in the Loop</h2>
+          <p className="text-white/30 mb-10 font-light">Subscribe for event announcements</p>
           <div className="flex gap-3 justify-center max-w-sm mx-auto">
             <input type="email" placeholder="Your email" className="dark-input flex-1" />
             <Button variant="primary">Subscribe</Button>
