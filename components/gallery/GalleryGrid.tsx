@@ -118,7 +118,7 @@ export default function GalleryGrid() {
   return (
     <>
       {/* Filter Buttons */}
-      <div className="flex flex-wrap gap-3 justify-center mb-12">
+      <div className="flex flex-wrap gap-6 justify-center mb-14">
         {categories.map((category) => (
           <button
             key={category}
@@ -127,10 +127,10 @@ export default function GalleryGrid() {
               setCurrentImageIndex(0);
             }}
             className={cn(
-              'px-6 py-2 rounded-full text-sm font-medium transition-all',
+              'text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 pb-1 border-b',
               activeCategory === category
-                ? 'bg-brand-accent text-brand-base'
-                : 'border border-brand-border text-brand-text hover:bg-brand-accent hover:text-brand-base hover:border-brand-accent'
+                ? 'text-white/70 border-brand-accent/50'
+                : 'text-white/25 border-transparent hover:text-white/50'
             )}
           >
             {category}
@@ -139,25 +139,23 @@ export default function GalleryGrid() {
       </div>
 
       {/* Gallery Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredImages.map((item, index) => (
           <button
             key={item.id}
             onClick={() => openLightbox(index)}
-            className="group relative overflow-hidden rounded-lg h-64 cursor-pointer"
+            className="group relative overflow-hidden h-72 cursor-pointer"
           >
             <Image
               src={item.src}
               alt={item.alt}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-base/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
               <div>
-                <p className="text-brand-heading font-medium text-sm">
-                  {item.alt}
-                </p>
-                <p className="text-brand-accent text-xs">{item.category}</p>
+                <p className="text-white/80 text-sm font-light">{item.alt}</p>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mt-1">{item.category}</p>
               </div>
             </div>
           </button>

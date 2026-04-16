@@ -21,23 +21,23 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-0">
       {items.map((item) => (
         <div
           key={item.id}
-          className="border-2 border-brand-border rounded-lg overflow-hidden"
+          className="border-b border-white/[0.06]"
         >
           <button
             onClick={() => toggleItem(item.id)}
-            className="w-full px-6 py-4 flex items-center justify-between hover:bg-brand-surface transition-colors"
+            className="w-full py-6 flex items-center justify-between hover:opacity-80 transition-opacity duration-300"
           >
-            <h3 className="text-left text-lg font-semibold text-brand-heading">
+            <h3 className="text-left text-[15px] text-white/60 font-light">
               {item.question}
             </h3>
             <svg
               className={cn(
-                'w-6 h-6 text-brand-accent flex-shrink-0 ml-4 transition-transform duration-300',
-                openId === item.id ? 'rotate-180' : ''
+                'w-4 h-4 text-white/20 flex-shrink-0 ml-6 transition-transform duration-500',
+                openId === item.id ? 'rotate-45' : ''
               )}
               fill="none"
               stroke="currentColor"
@@ -46,16 +46,19 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                strokeWidth={1.5}
+                d="M12 5v14M5 12h14"
               />
             </svg>
           </button>
-          {openId === item.id && (
-            <div className="px-6 py-4 bg-brand-base/50 border-t border-brand-border">
-              <p className="text-brand-text/80 leading-relaxed">{item.answer}</p>
-            </div>
-          )}
+          <div
+            className={cn(
+              'overflow-hidden transition-all duration-500',
+              openId === item.id ? 'max-h-96 pb-6' : 'max-h-0'
+            )}
+          >
+            <p className="text-white/30 leading-relaxed font-light text-[14px] pr-10">{item.answer}</p>
+          </div>
         </div>
       ))}
     </div>
