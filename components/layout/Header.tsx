@@ -60,7 +60,7 @@ export function Header() {
           >
             Cart
           </Link>
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
           <button
             className="md:hidden text-xl"
             onClick={() => setMenuOpen(!menuOpen)}

@@ -1,9 +1,10 @@
 'use client';
 
-import { useAuth } from '@clerk/nextjs';
+import { useAuth, useUser } from '@clerk/nextjs';
 
 export default function AdminPage() {
-  const { isSignedIn, user } = useAuth();
+  const { isSignedIn } = useAuth();
+  const { user } = useUser();
 
   if (!isSignedIn) {
     return <div>Redirecting to login...</div>;

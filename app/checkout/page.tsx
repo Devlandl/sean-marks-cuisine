@@ -3,6 +3,8 @@ import { Suspense } from 'react';
 import CartSummary from '@/components/checkout/CartSummary';
 import CheckoutForm from '@/components/checkout/CheckoutForm';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Checkout | Sean Mark's Cuisine",
   description: 'Complete your order and proceed to payment.',

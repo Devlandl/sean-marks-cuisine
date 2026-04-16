@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth, useUser } from '@clerk/nextjs';
 import BusinessHoursSettings from '@/app/components/admin/BusinessHoursSettings';
 import DeliveryZonesSettings from '@/app/components/admin/DeliveryZonesSettings';
 import NotificationSettings from '@/app/components/admin/NotificationSettings';
@@ -39,7 +39,8 @@ function initializeSettings(userEmail?: string): AdminSettings {
 }
 
 export default function SettingsPage() {
-  const { isSignedIn, user } = useAuth();
+  const { isSignedIn } = useAuth();
+  const { user } = useUser();
   const userEmail = user?.emailAddresses[0]?.emailAddress;
   const [settings, setSettings] = useState<AdminSettings>(() =>
     initializeSettings(userEmail)

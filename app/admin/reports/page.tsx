@@ -59,7 +59,7 @@ export default function ReportsPage() {
   const handleDownloadCSV = () => {
     if (!report) return;
 
-    const csv = generateCSV(report.type, report.data);
+    const csv = generateCSV(report.data, report.type);
     const filename = `sean-marks-${report.type}-${formatDateForFilename(new Date())}.csv`;
 
     downloadCSV(csv, filename);

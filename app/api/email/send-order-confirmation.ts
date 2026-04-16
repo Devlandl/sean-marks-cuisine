@@ -1,9 +1,10 @@
 import React from 'react';
 import { Resend } from 'resend';
-import OrderConfirmationTemplate from '@/components/emails/OrderConfirmationTemplate';
-import AdminOrderNotificationTemplate from '@/components/emails/AdminOrderNotificationTemplate';
+import OrderConfirmationTemplate from '../../../components/emails/OrderConfirmationTemplate';
+import AdminOrderNotificationTemplate from '../../../components/emails/AdminOrderNotificationTemplate';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const apiKey = process.env.RESEND_API_KEY;
+const resend = apiKey ? new Resend(apiKey) : null;
 
 interface OrderItem {
   name: string;
@@ -27,6 +28,11 @@ interface OrderData {
 
 export async function sendOrderConfirmationEmails(orderData: OrderData) {
   const adminEmail = process.env.ADMIN_EMAIL || 'admin@seanmarkscuisine.com';
+
+  if (!resend) {
+    console.warn('Resend API key not configured');
+    return { success: false, error: 'Email service not configured' };
+  }
 
   try {
     // Send customer confirmation email
@@ -57,6 +63,8 @@ export async function sendOrderConfirmationEmails(orderData: OrderData) {
         customerEmail: orderData.customerEmail,
         customerPhone: orderData.customerPhone,
         items: orderData.items,
+        subtotal: orderData.subtotal,
+        tax: orderData.tax,
         total: orderData.total,
         deliveryDate: orderData.deliveryDate,
         deliveryAddress: orderData.deliveryAddress,

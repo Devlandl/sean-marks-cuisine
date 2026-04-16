@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import OrderSummary from '@/components/order/OrderSummary';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Order Confirmed | Sean Mark\'s Cuisine',
   description: 'Your order has been successfully placed. Check your email for confirmation details.',

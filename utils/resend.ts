@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY || '');
+const apiKey = process.env.RESEND_API_KEY;
+const resend = apiKey ? new Resend(apiKey) : null;
 
 export default resend;
 
@@ -24,6 +25,10 @@ export async function sendOrderConfirmation(
   email: string,
   orderData: OrderData
 ) {
+  if (!resend) {
+    console.warn('Resend API key not configured');
+    return null;
+  }
   const { data, error } = await resend.emails.send({
     from: 'orders@seanmarkscuisine.com',
     to: email,
@@ -49,6 +54,10 @@ export async function sendOrderConfirmation(
 }
 
 export async function sendAdminOrderNotification(orderData: OrderData) {
+  if (!resend) {
+    console.warn('Resend API key not configured');
+    return null;
+  }
   const { data, error } = await resend.emails.send({
     from: 'orders@seanmarkscuisine.com',
     to: process.env.ADMIN_EMAIL || 'admin@seanmarkscuisine.com',
@@ -85,6 +94,10 @@ export async function sendStatusUpdate(
   orderNumber: string,
   status: string
 ) {
+  if (!resend) {
+    console.warn('Resend API key not configured');
+    return null;
+  }
   const { data, error } = await resend.emails.send({
     from: 'orders@seanmarkscuisine.com',
     to: email,
