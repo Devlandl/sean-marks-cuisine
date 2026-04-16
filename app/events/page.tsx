@@ -10,34 +10,33 @@ export default function EventsPage() {
 
   return (
     <div>
-      <section className="py-20 md:py-28 text-center">
+      <section className="pt-32 pb-20 text-center">
         <div className="container">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-brand-heading mb-6">Special Events</h1>
-          <p className="text-xl text-brand-text/70 max-w-2xl mx-auto">Exclusive dinners, cooking classes, and culinary experiences</p>
+          <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 font-medium">Upcoming</p>
+          <h1 className="font-serif text-5xl md:text-6xl text-brand-heading mb-6 font-normal">Special Events</h1>
+          <p className="text-lg text-white/35 max-w-xl mx-auto font-light">Exclusive dinners, cooking classes, and culinary experiences</p>
         </div>
       </section>
 
-      <section className="py-20 bg-brand-surface">
+      <section className="py-16 border-t border-white/[0.04]">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {events.map((event) => {
               const spotsLeft = event.capacity - event.registered;
               const isSoldOut = spotsLeft <= 0;
               return (
-                <div key={event.id} className="bg-brand-base rounded-lg border border-brand-border hover:border-brand-accent/40 transition-colors overflow-hidden">
-                  <div className="p-8">
-                    <div className="inline-block px-3 py-1 rounded bg-brand-accent/10 text-brand-accent text-xs font-semibold uppercase tracking-wider mb-4">{event.date}</div>
-                    <h3 className="text-xl font-bold text-brand-heading mb-3">{event.title}</h3>
-                    <p className="text-brand-text/60 text-sm mb-6">{event.description}</p>
-                    <div className="space-y-3 text-sm mb-6 pb-6 border-b border-brand-border">
-                      <div className="flex justify-between"><span className="text-brand-text/40">Time</span><span className="text-brand-text/80">{event.time}</span></div>
-                      <div className="flex justify-between"><span className="text-brand-text/40">Price</span><span className="text-brand-accent font-semibold">${(event.price / 100).toFixed(2)} / person</span></div>
-                      <div className="flex justify-between"><span className="text-brand-text/40">Availability</span><span className={isSoldOut ? 'text-red-400 font-semibold' : 'text-brand-text/80'}>{isSoldOut ? 'Sold Out' : `${spotsLeft} spots left`}</span></div>
-                    </div>
-                    <Link href={`/events/${event.id}`}>
-                      <Button variant={isSoldOut ? 'secondary' : 'primary'} size="md" className="w-full" disabled={isSoldOut}>{isSoldOut ? 'Sold Out' : 'Learn More'}</Button>
-                    </Link>
+                <div key={event.id} className="py-8 px-7 rounded-sm bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
+                  <p className="text-[11px] uppercase tracking-[0.25em] text-brand-accent/50 mb-4 font-medium">{event.date}</p>
+                  <h3 className="font-serif text-xl text-brand-heading mb-3 font-normal">{event.title}</h3>
+                  <p className="text-white/30 text-sm mb-8 font-light">{event.description}</p>
+                  <div className="space-y-3 text-sm mb-8 pb-8 border-b border-white/[0.06]">
+                    <div className="flex justify-between"><span className="text-white/20 font-light">Time</span><span className="text-white/50">{event.time}</span></div>
+                    <div className="flex justify-between"><span className="text-white/20 font-light">Price</span><span className="text-brand-accent font-medium">${(event.price / 100).toFixed(2)} / person</span></div>
+                    <div className="flex justify-between"><span className="text-white/20 font-light">Availability</span><span className={isSoldOut ? 'text-red-400/70' : 'text-white/50'}>{isSoldOut ? 'Sold Out' : `${spotsLeft} spots left`}</span></div>
                   </div>
+                  <Link href={`/events/${event.id}`}>
+                    <Button variant={isSoldOut ? 'secondary' : 'primary'} size="md" className="w-full" disabled={isSoldOut}>{isSoldOut ? 'Sold Out' : 'Learn More'}</Button>
+                  </Link>
                 </div>
               );
             })}
@@ -45,11 +44,11 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-24 border-t border-white/[0.04]">
         <div className="container text-center">
-          <h2 className="text-3xl font-extrabold mb-4 text-brand-heading">Stay in the Loop</h2>
-          <p className="text-brand-text/70 mb-8">Subscribe for event announcements</p>
-          <div className="flex gap-3 justify-center max-w-md mx-auto">
+          <h2 className="font-serif text-3xl mb-5 text-brand-heading font-normal">Stay in the Loop</h2>
+          <p className="text-white/30 mb-8 font-light">Subscribe for event announcements</p>
+          <div className="flex gap-3 justify-center max-w-sm mx-auto">
             <input type="email" placeholder="Your email" className="dark-input flex-1" />
             <Button variant="primary">Subscribe</Button>
           </div>
