@@ -2,123 +2,67 @@ import type { Metadata } from 'next';
 import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Sean Mark&apos;s Cuisine',
-  description:
-    'Get in touch with Sean Mark&apos;s Cuisine. We&apos;d love to hear from you about orders, catering, or any questions.',
+  title: "Contact Us | Sean Mark's Cuisine",
+  description: "Get in touch with Sean Mark's Cuisine. We'd love to hear from you.",
 };
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-brand-cream">
-      {/* Hero Section */}
-      <section className="bg-brand-dark text-brand-cream py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-lg text-brand-cream/90 max-w-2xl">
-            Have a question about our menu, catering services, or want to place an order? We&apos;re here to help.
-          </p>
+    <main className="min-h-screen">
+      <section className="py-20 md:py-28 text-center">
+        <div className="container">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-brand-heading mb-6">Get in Touch</h1>
+          <p className="text-xl text-brand-text/70 max-w-2xl mx-auto">Have a question about our menu, catering services, or want to place an order? We&apos;re here to help.</p>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-brand-surface">
+        <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Form - Takes up 2 cols on desktop */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg p-8 shadow-sm border-2 border-brand-dark/10">
-                <h2 className="text-2xl font-serif font-bold text-brand-dark mb-6">
-                  Send us a Message
-                </h2>
+              <div className="bg-brand-base rounded-lg p-8 md:p-10 border border-brand-border">
+                <h2 className="text-2xl font-extrabold text-brand-heading mb-8">Send us a Message</h2>
                 <ContactForm />
               </div>
             </div>
 
-            {/* Contact Info Sidebar */}
             <div className="space-y-8">
-              {/* Phone */}
-              <div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-2 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773c.058.3.102.605.102.924 0 1.748.585 3.367 1.563 4.657l1.973-1.187a1 1 0 011.195.226l3.137 3.784a1 1 0 01.15 1.094l-.868 2.604a1 1 0 01-.93.644H4a1 1 0 01-1-1V3z" />
-                  </svg>
-                  Phone
-                </h3>
-                <a
-                  href="tel:+15551234567"
-                  className="text-brand-dark/80 hover:text-brand-gold transition-colors"
-                >
-                  (555) 123-4567
-                </a>
-              </div>
+              {[
+                { title: 'Phone', content: '(908) 505-8050', href: 'tel:+19085058050', icon: 'M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.042 11.042 0 0 0 5.516 5.516l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z' },
+                { title: 'Email', content: 'hello@seanmarkscuisine.com', href: 'mailto:hello@seanmarkscuisine.com', icon: 'M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z' },
+                { title: 'Location', content: '233 Main St, Lebanon, NJ 08833', icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0zM15 11a3 3 0 1 0-6 0 3 3 0 0 0 6 0z' },
+              ].map((item) => (
+                <div key={item.title}>
+                  <h3 className="text-sm uppercase tracking-[0.15em] font-semibold text-brand-heading mb-3 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-accent"><path d={item.icon} /></svg>
+                    {item.title}
+                  </h3>
+                  {item.href ? (
+                    <a href={item.href} className="text-brand-text/70 hover:text-brand-accent transition-colors">{item.content}</a>
+                  ) : (
+                    <p className="text-brand-text/70">{item.content}</p>
+                  )}
+                </div>
+              ))}
 
-              {/* Email */}
               <div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-2 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
-                  Email
-                </h3>
-                <a
-                  href="mailto:contact@seanmarkscuisine.com"
-                  className="text-brand-dark/80 hover:text-brand-gold transition-colors"
-                >
-                  contact@seanmarkscuisine.com
-                </a>
-              </div>
-
-              {/* Address */}
-              <div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-2 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                  </svg>
-                  Location
-                </h3>
-                <p className="text-brand-dark/80">
-                  Lebanon, NJ
-                </p>
-              </div>
-
-              {/* Hours */}
-              <div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-2 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-brand-gold" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd" />
-                  </svg>
+                <h3 className="text-sm uppercase tracking-[0.15em] font-semibold text-brand-heading mb-3 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-accent"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" /></svg>
                   Hours
                 </h3>
-                <div className="text-brand-dark/80 space-y-1">
+                <div className="text-brand-text/70 space-y-1 text-sm">
                   <p>Tue - Fri: 9am - 6pm</p>
                   <p>Sat: 10am - 4pm</p>
                   <p>Sun - Mon: Closed</p>
                 </div>
               </div>
 
-              {/* Social Links */}
               <div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-3">Follow Us</h3>
+                <h3 className="text-sm uppercase tracking-[0.15em] font-semibold text-brand-heading mb-4">Follow Us</h3>
                 <div className="flex gap-3">
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-brand-gold text-brand-dark flex items-center justify-center hover:bg-brand-gold/90 transition-colors"
-                  >
-                    <span className="text-sm font-bold">f</span>
-                  </a>
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-brand-gold text-brand-dark flex items-center justify-center hover:bg-brand-gold/90 transition-colors"
-                  >
-                    <span className="text-sm font-bold">i</span>
-                  </a>
+                  {['Instagram', 'Facebook', 'TikTok'].map((social) => (
+                    <a key={social} href={`https://${social.toLowerCase()}.com/${social === 'TikTok' ? '@' : ''}seanmarkscuisine`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-lg border border-brand-border text-brand-text/60 text-sm hover:border-brand-accent hover:text-brand-accent transition-colors">{social}</a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -126,21 +70,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-brand-dark text-brand-cream py-16 md:py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-            Prefer to Order?
-          </h2>
-          <p className="text-lg text-brand-cream/90 mb-8 max-w-2xl mx-auto">
-            Browse our weekly menu and place your order directly.
-          </p>
-          <a
-            href="/menu"
-            className="inline-block px-8 py-3 bg-brand-gold text-brand-dark font-medium rounded-lg hover:bg-brand-gold/90 transition-colors"
-          >
-            Browse Menu
-          </a>
+      <section className="py-20 text-center">
+        <div className="container">
+          <h2 className="text-3xl font-extrabold mb-4 text-brand-heading">Prefer to Order?</h2>
+          <p className="text-brand-text/70 mb-8">Browse our weekly menu and place your order directly.</p>
+          <a href="/menu"><button className="px-8 py-3 bg-brand-accent text-brand-base font-semibold rounded-lg hover:bg-brand-accent-hover transition-colors cursor-pointer">Browse Menu</button></a>
         </div>
       </section>
     </main>
