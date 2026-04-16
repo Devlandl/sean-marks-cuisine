@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap');
 
 * {
   margin: 0;
@@ -11,77 +11,93 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: #0A0A0A;
-  color: #E0E0E0;
-  line-height: 1.7;
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: #080808;
+  color: #B8B8B8;
+  line-height: 1.75;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #FFFFFF;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #F0EDE8;
+  line-height: 1.2;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
-/* Accent underline utility */
-.accent-line {
-  display: inline-block;
-  position: relative;
-}
-.accent-line::after {
+/* Subtle noise texture overlay */
+body::before {
   content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: #4ADE40;
+  position: fixed;
+  inset: 0;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
 }
 
-/* Dark form inputs */
+/* Premium form inputs */
 .dark-input {
   width: 100%;
-  padding: 12px 16px;
-  background: #1A1A1A;
-  border: 1px solid #2A2A2A;
-  border-radius: 8px;
-  color: #E0E0E0;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  transition: border-color 0.2s;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: #E8E8E8;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
 }
 .dark-input:focus {
   outline: none;
-  border-color: #4ADE40;
+  border-color: rgba(74, 222, 64, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 3px rgba(74, 222, 64, 0.06);
 }
 .dark-input::placeholder {
-  color: #666;
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 300;
 }
 
-/* Dark select styling */
 .dark-select {
   width: 100%;
-  padding: 12px 16px;
-  background: #1A1A1A;
-  border: 1px solid #2A2A2A;
-  border-radius: 8px;
-  color: #E0E0E0;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  transition: border-color 0.2s;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: #E8E8E8;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234ADE40' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23666' stroke-width='1.5' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 16px center;
+  background-position: right 18px center;
 }
 .dark-select:focus {
   outline: none;
-  border-color: #4ADE40;
+  border-color: rgba(74, 222, 64, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 3px rgba(74, 222, 64, 0.06);
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
 }

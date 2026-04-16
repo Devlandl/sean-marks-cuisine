@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0A0A0A;
-  --foreground: #E0E0E0;
-  --brand-base: #0A0A0A;
-  --brand-surface: #1A1A1A;
-  --brand-border: #2A2A2A;
-  --brand-text: #E0E0E0;
-  --brand-heading: #FFFFFF;
+  --background: #080808;
+  --foreground: #B8B8B8;
+  --brand-base: #080808;
+  --brand-surface: #0F0F0F;
+  --brand-border: rgba(255, 255, 255, 0.06);
+  --brand-text: #B8B8B8;
+  --brand-heading: #F0EDE8;
   --brand-accent: #4ADE40;
-  --brand-accent-hover: #3BCF31;
-  --brand-warm: #F59E0B;
+  --brand-accent-hover: #5AEE50;
+  --brand-muted: rgba(255, 255, 255, 0.35);
+  --brand-warm: #D4A574;
 }
 
 @theme inline {
@@ -23,12 +24,14 @@
   --color-brand-heading: var(--brand-heading);
   --color-brand-accent: var(--brand-accent);
   --color-brand-accent-hover: var(--brand-accent-hover);
+  --color-brand-muted: var(--brand-muted);
   --color-brand-warm: var(--brand-warm);
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Outfit', system-ui, sans-serif;
 }

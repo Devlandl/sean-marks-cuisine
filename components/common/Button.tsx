@@ -15,16 +15,16 @@ export function Button({
   return (
     <button
       className={cn(
-        'font-semibold rounded-lg transition-all duration-200 cursor-pointer tracking-wide',
+        'font-sans font-medium tracking-[0.08em] uppercase transition-all duration-300 cursor-pointer',
         variant === 'primary' &&
-          'bg-brand-accent text-brand-base hover:bg-brand-accent-hover',
+          'bg-brand-accent text-brand-base hover:bg-brand-accent-hover hover:shadow-[0_0_30px_rgba(74,222,64,0.15)]',
         variant === 'secondary' &&
-          'bg-brand-surface text-brand-heading border border-brand-border hover:border-brand-accent',
+          'bg-transparent text-brand-heading border border-white/10 hover:border-white/25 hover:bg-white/[0.03]',
         variant === 'outline' &&
-          'border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-base',
-        size === 'sm' && 'px-5 py-2.5 text-sm',
-        size === 'md' && 'px-7 py-3',
-        size === 'lg' && 'px-9 py-4 text-lg',
+          'bg-transparent text-brand-accent border border-brand-accent/30 hover:border-brand-accent/60 hover:bg-brand-accent/[0.05]',
+        size === 'sm' && 'px-6 py-2.5 text-xs',
+        size === 'md' && 'px-8 py-3.5 text-xs',
+        size === 'lg' && 'px-10 py-4 text-sm',
         className
       )}
       {...props}
