@@ -20,7 +20,7 @@ export default function RootLayout({
     <ClerkProvider>
       <Providers>
         <html lang="en">
-          <body className="min-h-full flex flex-col bg-brand-cream text-brand-text">
+          <body className="min-h-full flex flex-col bg-brand-base text-brand-text">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
