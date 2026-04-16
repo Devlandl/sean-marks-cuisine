@@ -79,12 +79,12 @@ export default function CheckoutForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Customer Info */}
-      <div className="bg-white rounded-lg border-2 border-brand-dark/10 p-6">
-        <h3 className="text-lg font-semibold text-brand-dark mb-4">Delivery Information</h3>
+      <div className="bg-brand-base rounded-lg border-2 border-brand-border p-6">
+        <h3 className="text-lg font-semibold text-brand-heading mb-4">Delivery Information</h3>
 
         <div className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-brand-dark mb-1">
+            <label htmlFor="name" className="block text-sm font-medium text-brand-text/70 mb-1">
               Full Name *
             </label>
             <input
@@ -94,12 +94,12 @@ export default function CheckoutForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none"
+              className="dark-input"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-brand-dark mb-1">
+            <label htmlFor="email" className="block text-sm font-medium text-brand-text/70 mb-1">
               Email *
             </label>
             <input
@@ -109,12 +109,12 @@ export default function CheckoutForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none"
+              className="dark-input"
             />
           </div>
 
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-brand-dark mb-1">
+            <label htmlFor="phone" className="block text-sm font-medium text-brand-text/70 mb-1">
               Phone *
             </label>
             <input
@@ -124,12 +124,12 @@ export default function CheckoutForm() {
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none"
+              className="dark-input"
             />
           </div>
 
           <div>
-            <label htmlFor="address" className="block text-sm font-medium text-brand-dark mb-1">
+            <label htmlFor="address" className="block text-sm font-medium text-brand-text/70 mb-1">
               Delivery Address *
             </label>
             <input
@@ -140,12 +140,12 @@ export default function CheckoutForm() {
               onChange={handleChange}
               required
               placeholder="Street address, city, state, zip"
-              className="w-full px-4 py-2 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none"
+              className="dark-input"
             />
           </div>
 
           <div>
-            <label htmlFor="deliveryDate" className="block text-sm font-medium text-brand-dark mb-1">
+            <label htmlFor="deliveryDate" className="block text-sm font-medium text-brand-text/70 mb-1">
               Preferred Delivery Date *
             </label>
             <input
@@ -155,37 +155,37 @@ export default function CheckoutForm() {
               value={formData.deliveryDate}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none"
+              className="dark-input"
             />
           </div>
         </div>
       </div>
 
       {/* Coupon Code */}
-      <div className="bg-white rounded-lg border-2 border-brand-dark/10 p-6">
-        <h3 className="text-lg font-semibold text-brand-dark mb-4">Promo Code</h3>
+      <div className="bg-brand-base rounded-lg border-2 border-brand-border p-6">
+        <h3 className="text-lg font-semibold text-brand-heading mb-4">Promo Code</h3>
         <div className="flex gap-2">
           <input
             type="text"
             value={couponCode}
             onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
             placeholder="Enter coupon code"
-            className="flex-1 px-4 py-2 border-2 border-brand-dark/20 rounded-lg focus:border-brand-gold focus:outline-none"
+            className="dark-input flex-1"
           />
           <button
             type="button"
             onClick={handleCoupon}
-            className="px-6 py-2 bg-brand-gold text-brand-dark font-medium rounded-lg hover:bg-brand-gold/90 transition-colors"
+            className="px-6 py-2 bg-brand-accent text-brand-base font-medium rounded-lg hover:bg-brand-accent/90 transition-colors"
           >
             Apply
           </button>
         </div>
         {discount > 0 && (
-          <p className="text-sm text-green-700 mt-2">
+          <p className="text-sm text-green-400 mt-2">
             {discount}% discount applied!
           </p>
         )}
-        {error && <p className="text-sm text-red-700 mt-2">{error}</p>}
+        {error && <p className="text-sm text-red-400 mt-2">{error}</p>}
       </div>
 
       {/* Submit Button */}

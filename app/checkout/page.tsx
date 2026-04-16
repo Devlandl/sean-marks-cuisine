@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 
 export default function CheckoutPage() {
   return (
-    <main className="min-h-screen bg-brand-cream">
+    <main className="min-h-screen bg-brand-base">
       {/* Hero */}
-      <section className="bg-brand-dark text-brand-cream py-12">
+      <section className="bg-brand-base text-brand-text py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-serif font-bold mb-2">Checkout</h1>
-          <p className="text-brand-cream/90">Review your order and complete payment</p>
+          <h1 className="text-4xl font-serif font-bold text-brand-heading mb-2">Checkout</h1>
+          <p className="text-brand-text/70">Review your order and complete payment</p>
         </div>
       </section>
 
@@ -29,7 +29,7 @@ export default function CheckoutPage() {
               <CheckoutForm />
             </div>
             <div>
-              <Suspense fallback={<div className="h-64 bg-brand-cream/30 rounded-lg animate-pulse" />}>
+              <Suspense fallback={<div className="h-64 bg-brand-surface rounded-lg animate-pulse" />}>
                 <CartSummary />
               </Suspense>
             </div>
@@ -42,7 +42,7 @@ export default function CheckoutPage() {
         <div className="container mx-auto px-4">
           <a
             href="/menu"
-            className="text-brand-dark hover:text-brand-gold transition-colors underline"
+            className="text-brand-text hover:text-brand-accent transition-colors underline"
           >
             &larr; Continue Shopping
           </a>
