@@ -5,8 +5,8 @@ import Link from 'next/link';
 export default function AboutPage() {
   return (
     <div>
-      <section className="pt-32 pb-20 text-center">
-        <div className="container">
+      <section className="pt-20 pb-24 text-center">
+        <div className="container hero-animate">
           <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 font-medium">The Story</p>
           <h1 className="font-serif text-5xl md:text-7xl text-brand-heading mb-6 font-normal">Meet Sean Mark</h1>
           <p className="text-lg text-white/35 max-w-xl mx-auto font-light leading-relaxed">Chef, creator, and passionate about bringing people together through food</p>
@@ -21,7 +21,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 border-t border-white/[0.04]">
+      <section className="py-28 border-t border-white/[0.04]">
         <div className="container max-w-3xl">
           <h2 className="font-serif text-3xl md:text-4xl text-brand-heading mb-10 font-normal">The Chef&apos;s Story</h2>
           <div className="space-y-6 text-white/40 text-[15px] leading-[1.9] font-light">
@@ -32,12 +32,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 border-t border-white/[0.04]">
+      <section className="py-28 border-t border-white/[0.04]">
         <div className="container max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
             <div>
               <h3 className="font-serif text-2xl text-brand-heading mb-10 font-normal">Philosophy</h3>
-              <ul className="space-y-8">
+              <ul className="space-y-8 stagger-children">
                 {[
                   { title: 'Fresh Ingredients', desc: 'Sourcing the finest seasonal ingredients' },
                   { title: 'Cooked with Heart', desc: 'Every dish prepared with care and passion' },
@@ -61,7 +61,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 border-t border-white/[0.04]">
+      <section className="py-28 border-t border-white/[0.04]">
         <div className="container max-w-3xl">
           <h3 className="font-serif text-2xl text-brand-heading mb-14 font-normal">Experience</h3>
           <div className="relative pl-10 border-l border-white/[0.06] space-y-14">
@@ -80,7 +80,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-32 border-t border-white/[0.04] relative">
+      <section className="py-36 border-t border-white/[0.04] relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(74,222,64,0.02)_0%,transparent_60%)]" />
         <div className="container text-center relative">
           <h2 className="font-serif text-4xl md:text-5xl mb-5 text-brand-heading font-normal">Ready to Experience<br />Sean&apos;s Cooking?</h2>

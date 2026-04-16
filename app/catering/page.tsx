@@ -12,17 +12,17 @@ export default function CateringPage() {
 
   return (
     <div>
-      <section className="pt-32 pb-20 text-center">
-        <div className="container">
+      <section className="pt-20 pb-24 text-center">
+        <div className="container hero-animate">
           <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 font-medium">Private Events</p>
           <h1 className="font-serif text-5xl md:text-6xl text-brand-heading mb-6 font-normal">Event Catering</h1>
           <p className="text-lg text-white/35 max-w-xl mx-auto font-light">Let Sean Mark&apos;s Cuisine transform your gathering with expertly crafted meals</p>
         </div>
       </section>
 
-      <section className="py-24 border-t border-white/[0.04]">
+      <section className="py-28 border-t border-white/[0.04]">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 stagger-children">
             {[
               { num: '01', title: 'Professional Chef', desc: 'Years of experience creating memorable meals' },
               { num: '02', title: 'Customized Menus', desc: 'Tailored to your event, preferences, and dietary needs' },
@@ -38,17 +38,17 @@ export default function CateringPage() {
         </div>
       </section>
 
-      <section className="py-24 border-t border-white/[0.04]">
+      <section className="py-28 border-t border-white/[0.04]">
         <div className="container">
           <h2 className="font-serif text-3xl text-brand-heading mb-14 font-normal">Sample Menus</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-children">
             {[
               { title: 'West Indian Feast', description: 'Authentic Caribbean flavors', items: ['Brown Chicken Stew', 'Plantain Sides', 'Fresh Salads', 'Tropical Desserts'] },
               { title: 'Contemporary Elegance', description: 'Modern cuisine with upscale presentation', items: ['Shrimp Boil', 'Polenta Dishes', 'Seasonal Vegetables', 'Gourmet Desserts'] },
               { title: 'Comfort Classics', description: 'Beloved favorites that satisfy', items: ['Baked Ziti', 'Cowboy Skillet', 'Vegetarian Options', 'Classic Desserts'] },
               { title: 'Custom Creation', description: 'Build your perfect menu', items: ['Your Preferences', 'Dietary Accommodations', 'Signature Dishes', 'Special Requests'] },
             ].map((menu) => (
-              <div key={menu.title} className="py-8 px-7 rounded-sm bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300">
+              <div key={menu.title} className="py-8 px-7 rounded-sm bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 hover-lift">
                 <h3 className="font-serif text-xl text-brand-heading mb-1 font-normal">{menu.title}</h3>
                 <p className="text-white/25 text-sm mb-6 font-light">{menu.description}</p>
                 <ul className="space-y-2.5">
@@ -60,7 +60,7 @@ export default function CateringPage() {
         </div>
       </section>
 
-      <section className="py-24 border-t border-white/[0.04]">
+      <section className="py-28 border-t border-white/[0.04]">
         <div className="container max-w-2xl">
           <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 text-center font-medium">Get Started</p>
           <h2 className="font-serif text-3xl text-center mb-14 text-brand-heading font-normal">Request a Quote</h2>

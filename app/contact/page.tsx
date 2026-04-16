@@ -6,14 +6,14 @@ export const metadata: Metadata = { title: "Contact Us | Sean Mark's Cuisine", d
 export default function ContactPage() {
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-20 text-center">
-        <div className="container">
+      <section className="pt-20 pb-24 text-center">
+        <div className="container hero-animate">
           <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 font-medium">Reach Out</p>
           <h1 className="font-serif text-5xl md:text-6xl text-brand-heading mb-6 font-normal">Get in Touch</h1>
           <p className="text-lg text-white/35 max-w-xl mx-auto font-light">Have a question about our menu, catering, or want to place an order?</p>
         </div>
       </section>
-      <section className="py-16 border-t border-white/[0.04]">
+      <section className="py-24 border-t border-white/[0.04]">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2">
@@ -39,7 +39,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <section className="py-24 border-t border-white/[0.04] text-center">
+      <section className="py-32 border-t border-white/[0.04] text-center">
         <div className="container">
           <h2 className="font-serif text-3xl mb-5 text-brand-heading font-normal">Prefer to Order?</h2>
           <p className="text-white/30 mb-8 font-light">Browse our weekly menu and place your order directly.</p>

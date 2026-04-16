@@ -35,14 +35,14 @@ const faqCategories = [
 export default function FAQPage() {
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-20 text-center">
-        <div className="container">
+      <section className="pt-20 pb-24 text-center">
+        <div className="container hero-animate">
           <p className="text-[11px] uppercase tracking-[0.3em] text-brand-accent/60 mb-4 font-medium">Support</p>
           <h1 className="font-serif text-5xl md:text-6xl text-brand-heading mb-6 font-normal">Frequently Asked Questions</h1>
           <p className="text-lg text-white/35 max-w-xl mx-auto font-light">Find answers to common questions. <a href="/contact" className="text-brand-accent/60 hover:text-brand-accent transition-colors">Contact us directly.</a></p>
         </div>
       </section>
-      <section className="py-16 border-t border-white/[0.04]">
+      <section className="py-24 border-t border-white/[0.04]">
         <div className="container max-w-3xl">
           <div className="space-y-20">
             {faqCategories.map((category) => (
@@ -54,7 +54,7 @@ export default function FAQPage() {
           </div>
         </div>
       </section>
-      <section className="py-24 border-t border-white/[0.04] text-center">
+      <section className="py-32 border-t border-white/[0.04] text-center">
         <div className="container">
           <h2 className="font-serif text-3xl mb-5 text-brand-heading font-normal">Still Have Questions?</h2>
           <p className="text-white/30 mb-8 font-light">Our team is here to help.</p>
